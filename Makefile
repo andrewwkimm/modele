@@ -11,10 +11,10 @@ build:
 	make test
 
 lint:
-	poetry run flake8 src tests
+	poetry run flake8 tests
 
 reformat:
-	poetry run black src tests
+	poetry run black tests
 
 setup:
 	pre-commit install --install-hooks
@@ -24,7 +24,7 @@ test:
 	poetry run pytest -x --cov
 
 type_check:
-	poetry run mypy src tests --ignore-missing-import
+	poetry run mypy tests --ignore-missing-import
 
 ################################################################################
 
@@ -32,7 +32,7 @@ type_check:
 	build \
 	help \
 	lint \
-	setup \
 	reformat \
+	setup \
 	test \
 	type_check

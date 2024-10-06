@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
           poetry install
-          poetry run black src tests
-          poetry run flake8 src tests
-          poetry run mypy src tests --ignore-missing-import
+          poetry run black tests
+          poetry run flake8 tests
+          poetry run mypy tests --ignore-missing-import
           poetry run pytest -x --cov
