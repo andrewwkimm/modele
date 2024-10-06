@@ -1,5 +1,5 @@
 
-name: CI
+name: modele CI
 
 on: [push, pull_request]
 
