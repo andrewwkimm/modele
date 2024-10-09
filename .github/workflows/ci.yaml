@@ -36,4 +36,12 @@ jobs:
           poetry run black tests
           poetry run flake8 tests
           poetry run mypy tests --ignore-missing-import
-          poetry run pytest -x --cov
+          poetry run pytest --cov=modele --cov-report term --cov-report xml
+
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          env_vars: OS,PYTHON
+          name: Python ${{ matrix.python-version }} on ${{ runner.os }}
