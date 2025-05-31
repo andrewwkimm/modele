@@ -1,14 +1,15 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3/.devcontainer/base.Dockerfile
+# See here for image contents: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 
-# [Choice] Python version: 3, 3.9, 3.8, 3.7, 3.6
-ARG VARIANT="3.10"
-FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 
 RUN \
     apt-get upgrade \
     && apt-get update \
-    && apt-get install -y bash-completion curl \
+    && apt-get install -y bash-completion curl python3-pip \
+    # Add --break-system-packages if using noble
     && pip install pre-commit
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Coding only for vscode user and not root
 USER vscode
