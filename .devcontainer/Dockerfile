@@ -1,16 +1,17 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3/.devcontainer/base.Dockerfile
+# See here for image contents: https://hub.docker.com/r/nvidia/cuda
 
-# [Choice] Python version: 3, 3.9, 3.8, 3.7, 3.6
-ARG VARIANT="3.10"
-FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+FROM nvidia/cuda:12.9.0-runtime-ubuntu22.04
 
 RUN \
-    apt-get upgrade \
-    && apt-get update \
-    && apt-get install -y bash-completion curl \
+    apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y bash-completion curl git python3 python3-pip sudo \
     && pip install pre-commit
 
 # Coding only for vscode user and not root
+RUN groupadd --gid 1000 vscode \
+    && useradd --uid 1000 --gid vscode --shell /bin/bash --create-home vscode
+
 USER vscode
 
 RUN curl -sSL https://install.python-poetry.org | python3 - \

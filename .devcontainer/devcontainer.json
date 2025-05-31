@@ -40,6 +40,9 @@
 		"ms-python.vscode-pylance",
 		"redhat.vscode-yaml"
 	],
+	// Sets container ID to vscode
+	// TODO: Fix Docker error where --gpu all returns an error
+	"runArgs": ["--hostname=vscode"],
 	// Set project folder as safe directory and changes ownership of it to vscode.
 	"postCreateCommand": "bash ./.devcontainer/setup.sh",
 	"remoteUser": "vscode"
