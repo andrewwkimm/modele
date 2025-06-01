@@ -41,6 +41,6 @@
 		"redhat.vscode-yaml"
 	],
 	// Set project folder as safe directory and changes ownership of it to vscode.
-	"postCreateCommand": "bash ./.devcontainer/setup.sh",
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"postCreateCommand": "bash ./.devcontainer/setup.sh"
 }
