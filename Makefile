@@ -11,10 +11,10 @@ build:
 	make test
 
 lint:
-	poetry run flake8 tests
+	poetry run ruff check tests
 
 reformat:
-	poetry run black tests
+	poetry run ruff format tests
 
 setup:
 	pre-commit install --install-hooks
