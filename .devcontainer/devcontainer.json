@@ -1,46 +1,37 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3
 {
-	"name": "Python 3",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			// Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
-			"VARIANT": "3.10",
-			// Options
-			"INSTALL_NODE": "false",
-			"NODE_VERSION": "lts/*"
-		}
-	},
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"editor.defaultFormatter": "ms-python.python",
-		"editor.formatOnSave": true,
-		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		"python.formatting.provider": "black",
-		"python.languageServer": "Pylance",
-		"python.linting.enabled": true,
-		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		"python.linting.flake8Enabled": true,
-		"python.linting.mypyEnabled": true,
-		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		"python.linting.pylintEnabled": false,
-		"python.pythonPath": "${workspaceFolder}/.venv/bin/python",
-		"python.testing.pytestArgs": [
-			"tests"
-		],
-		"python.terminal.activateEnvironment": true,
-		"python.testing.pytestEnabled": true
-	},
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"cucumberopen.cucumber-official",
-		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"redhat.vscode-yaml"
-	],
-	// Set project folder as safe directory and changes ownership of it to vscode.
-	"remoteUser": "vscode",
-	"postCreateCommand": "bash ./.devcontainer/setup.sh"
+  "name": "Python 3",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.ruffEnabled": true,
+        "python.formatting.provider": "none",
+        "python.testing.pytestArgs": ["tests"],
+        "python.testing.pytestEnabled": true,
+        "python.terminal.activateEnvironment": true,
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+      },
+      "extensions": [
+        "charliermarsh.ruff",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "redhat.vscode-yaml",
+        "cucumberopen.cucumber-official"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash ./.devcontainer/setup.sh"
 }
