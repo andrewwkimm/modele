@@ -37,4 +37,5 @@ git config --global core.editor "code --wait"
 git config --global --add safe.directory "$(pwd)"
 
 # Setup environment
+pip install pre-commit
 make setup

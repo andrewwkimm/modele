@@ -5,9 +5,7 @@ FROM mcr.microsoft.com/devcontainers/base:jammy
 RUN \
     apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y bash-completion curl \
-    # Add --break-system-packages if using noble
-    && pip install pre-commit
+    && apt-get install -y bash-completion curl
 
 # Coding only for vscode user and not root
 USER vscode
