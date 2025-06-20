@@ -33,9 +33,9 @@ jobs:
       - name: Build
         run: |
           poetry install
-          poetry run black tests
-          poetry run flake8 tests
-          poetry run mypy tests --ignore-missing-import
+          make reformat
+          make lint
+          make type_check
           poetry run pytest --cov=modele --cov-report term --cov-report xml
 
       - name: Upload coverage report to Codecov
