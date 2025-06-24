@@ -1,20 +1,24 @@
-[tool.poetry]
+[project]
 name = "modele"
 version = "0.1.0"
 description = "modele"
-authors = ["Kim, Andrew <andrewkimka@gmail.com>"]
+authors = [
+    {name = "Kim, Andrew", email = "andrewkimka@gmail.com"}
+]
 readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
 
-[tool.poetry.dependencies]
-python = ">=3.11"
-
-[tool.poetry.group.dev.dependencies]
-coverage = "^7.9.1"
-mypy = "^1.16.1"
-pytest = "^8.4.1"
-pytest-cov = "^6.2.1"
-pytest-mock = "^3.14.1"
-ruff = "^0.12.0"
+[dependency-groups]
+dev = [
+    "coverage>=7.9.1",
+    "mypy>=1.16.1",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "pytest-mock>=3.14.1",
+    "ruff>=0.12.0",
+    "hatch>=1.14.1",
+]
 
 [tool.coverage.run]
 branch = true
@@ -60,3 +64,7 @@ exclude = ["tests/data", ".venv", "build", "dist"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"  # or "numpy" or "pep257"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -4,27 +4,27 @@ help:
 ################################################################################
 
 build:
-	poetry install
+	uv sync
 	make reformat
 	make lint
 	make type_check
 	make test
 
 lint:
-	poetry run ruff check tests
+	uv run ruff check --fix .
 
 reformat:
-	poetry run ruff format tests
+	uv run ruff format .
 
 setup:
 	pre-commit install --install-hooks
-	poetry install
+	uv sync
 
 test:
-	poetry run pytest -x --cov
+	uv run pytest -x --cov
 
 type_check:
-	poetry run mypy tests --ignore-missing-import
+	uv run mypy tests --ignore-missing-import
 
 ################################################################################
 

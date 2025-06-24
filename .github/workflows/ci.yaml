@@ -27,16 +27,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
       - name: Build
         run: |
-          poetry install
-          poetry run ruff format tests
-          poetry run ruff check tests
-          poetry run mypy tests --ignore-missing-import
-          poetry run pytest --cov=modele --cov-report term --cov-report xml
+          uv install
+          uv run ruff format tests
+          uv run ruff check tests
+          uv run mypy tests --ignore-missing-import
+          uv run pytest --cov=modele --cov-report term --cov-report xml
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v4
