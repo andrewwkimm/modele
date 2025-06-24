@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |
-          uv install
+          uv sync
           uv run ruff format tests
           uv run ruff check tests
           uv run mypy tests --ignore-missing-import
