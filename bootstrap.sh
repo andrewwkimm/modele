@@ -28,6 +28,9 @@ mv tests/test_modele.py "tests/test_${project_name}.py"
 sed -i "s/from modele/from ${project_name}/" "tests/test_${project_name}.py"
 sed -i "s/\"Tests for modele.\"/\"Tests for ${project_name}.\"/" "tests/test_${project_name}.py"
 
+# Update README.md
+sed -i "s/# modele.*/# ${project_name}/; /^The modele Python project template\.$/d" README.md
+
 echo "Setup complete!"
 
 # Remove setup script
