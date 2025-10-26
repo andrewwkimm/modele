@@ -28,12 +28,6 @@ source = ["modele"]
 show_missing = true
 fail_under = 50
 
-[tool.mypy]
-files = ["modele", "tests"]
-cache_dir = "${HOME}/.mypy_cache"
-ignore_errors = false
-disallow_untyped_defs = true
-
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
@@ -47,15 +41,20 @@ fix = true
 unsafe-fixes = true
 
 lint.select = [
-  "E",   # pycodestyle errors
-  "F",   # pyflakes
-  "I",   # isort
-  "UP",  # pyupgrade
-  "B",   # bugbear
-  "SIM", # simplify
-  "D",   # pydocstyle
-  "PL",  # pylint-like
-  "C90", # mccabe
+    "B",    # bugbear
+    "C4",   # flake8-comprehensions
+    "C90",  # mccabe
+    "D",    # pydocstyle
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "FLY",  # f-strings
+    "I",    # isort
+    "PERF", # performance
+    "PL",   # pylint-like
+    "PTH",  # pathlib
+    "RUF",  # ruff-specific
+    "SIM",  # simplify
+    "UP",   # pyupgrade
 ]
 
 lint.ignore = []
