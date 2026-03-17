@@ -16,6 +16,7 @@ sed -i "s/--cov=modele/--cov=${project_name}/" .github/workflows/ci.yaml
 
 # Rename project directory
 mv modele "${project_name}"
+[ -d "modele" ] && rm -rf modele
 
 # Update project __init__.py
 sed -i "s/\"The modele package.\"/\"The ${project_name} package.\"/" "${project_name}/__init__.py"
