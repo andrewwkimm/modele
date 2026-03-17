@@ -1,7 +1,7 @@
 [project]
 name = "modele"
 version = "0.1.0"
-description = "modele"
+description = "An opinionated Python project template."
 authors = [
     {name = "Kim, Andrew", email = "andrewkimka@gmail.com"}
 ]
