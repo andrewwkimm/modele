@@ -8,6 +8,11 @@ if [[ -f .env ]]; then
     source .env
 fi
 
+# Run bootstrap script if it exists
+if [[ -f bootstrap.sh ]]; then
+    bash bootstrap.sh
+fi
+
 # Prompt for missing values
 if [[ -z "$GIT_USERNAME" ]]; then
     read -p "Enter your Git username: " GIT_USERNAME
