@@ -17,6 +17,7 @@ reformat:
 	uv run ruff format .
 
 setup:
+	@if [ -f bootstrap.sh ]; then bash bootstrap.sh; fi
 	uv sync
 	uv run pre-commit install --install-hooks
 
