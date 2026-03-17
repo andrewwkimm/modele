@@ -23,9 +23,11 @@
       ]
     }
   },
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
+  ],
   "remoteEnv": {
-    "GIT_AUTHOR_NAME": "${localEnv:GIT_AUTHOR_NAME}",
-    "GIT_AUTHOR_EMAIL": "${localEnv:GIT_AUTHOR_EMAIL}"
+      "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
   },
   "remoteUser": "vscode",
   "postCreateCommand": "bash ./.devcontainer/setup.sh"
