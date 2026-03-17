@@ -7,9 +7,13 @@ project_name="$(basename "$PWD" | tr '-' '_')"
 
 echo "Setting up project: ${project_name}"
 
+# Prompt for project description
+read -p "Enter project description: " project_description
+
 # Update pyproject.toml
 sed -i "s/name = \"modele\"/name = \"${project_name}\"/" pyproject.toml
 sed -i "s/source = \[\"modele\"\]/source = [\"${project_name}\"]/" pyproject.toml
+sed -i "s/description = \"An opinionated Python project template.\"/description = \"${project_description}\"/" pyproject.toml
 
 # Update CI workflow
 sed -i "s/--cov=modele/--cov=${project_name}/" .github/workflows/ci.yaml
