@@ -1,5 +1,5 @@
 {
-  "name": "Python 3",
+  "name": "CUDA Dev Container",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
@@ -9,10 +9,10 @@
       "settings": {
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
-        "python.testing.pytestArgs": ["tests"],
-        "python.testing.pytestEnabled": true,
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
         "python.terminal.activateEnvironment": true,
-        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["tests"]
       },
       "extensions": [
         "charliermarsh.ruff",
@@ -26,10 +26,15 @@
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
   ],
-  "remoteEnv": {
-      "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
+  "runArgs": ["--gpus", "all"],
+  "containerEnv": {
+    "NVIDIA_VISIBLE_DEVICES": "all",
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility"
   },
   "containerUser": "root",
   "remoteUser": "vscode",
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
+  },
   "postCreateCommand": "make setup"
 }
