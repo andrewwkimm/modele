@@ -9,6 +9,7 @@ RUN apt-get update -y \
         curl \
         git \
         sudo \
+        tree \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
