@@ -14,7 +14,3 @@ RUN apt-get update -y \
 
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
-
-# Create vscode user with sudo
-RUN useradd -m -s /bin/bash vscode \
-    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/vscode
