@@ -31,8 +31,7 @@
     "NVIDIA_VISIBLE_DEVICES": "all",
     "NVIDIA_DRIVER_CAPABILITIES": "compute,utility"
   },
-  "containerUser": "root",
-  "remoteUser": "vscode",
+  "remoteUser": "root",
   "remoteEnv": {
     "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
   },
