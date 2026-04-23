@@ -32,11 +32,7 @@ jobs:
 
       - name: Test
         run: |
-          uv sync
-          uv run ruff format tests
-          uv run ruff check tests
-          uv run ty check tests
-          uv run pytest --cov=modele --cov-report term --cov-report xml
+          make ci
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v4
